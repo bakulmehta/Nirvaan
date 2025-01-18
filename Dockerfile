@@ -27,7 +27,7 @@ RUN npm install -g serve
 # Copy built files
 COPY --from=build /app/dist .
 
-EXPOSE 3000
+EXPOSE 3050
 
-# Start serve
-CMD ["serve", "-s", ".", "-l", "3050"] 
+# Start serve - listen on all interfaces
+CMD ["serve", "-s", ".", "-l", "tcp://0.0.0.0:3050"] 
