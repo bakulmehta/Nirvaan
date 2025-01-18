@@ -14,6 +14,8 @@ interface Message {
   content: string;
 }
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function Insights(): JSX.Element {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
@@ -27,7 +29,7 @@ function Insights(): JSX.Element {
       try {
         if (callId) {
           const response = await axios.get<InsightsData>(
-            `http://127.0.0.1:8000/call-details/${callId}`
+            `${API_URL}/call-details/${callId}`
           );
           setInsights(response.data);
           setLoading(false);

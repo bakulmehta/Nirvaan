@@ -20,6 +20,8 @@ const ChatIcon = () => (
   </svg>
 );
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function Form(): JSX.Element {
     const [phone, setPhone] = useState("");
     const [countryCode, setCountryCode] = useState("+91");
@@ -33,7 +35,7 @@ function Form(): JSX.Element {
         navigate("/insights");
 
         try {
-            const response = await axios.post("http://127.0.0.1:8000/submit", {
+            const response = await axios.post(`${API_URL}/submit`, {
                 phone_number: countryCode + phone
             });
             localStorage.setItem("callId", response.data);
