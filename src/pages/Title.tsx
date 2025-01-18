@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useIsSafari } from '../hooks/useIsSafari';
 
 function Title(): JSX.Element {
     const navigate = useNavigate();
+    const isSafari = useIsSafari();
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -22,7 +24,10 @@ function Title(): JSX.Element {
                 playsInline
                 className="w-48 sm:w-56 md:w-64 mx-auto mb-8"
             >
-                <source src="/waves.webm" type="video/webm" />
+                <source 
+                    src={isSafari ? "/waves.mov" : "/waves.webm"} 
+                    type={isSafari ? "video/quicktime" : "video/webm"} 
+                />
             </video>
             <motion.h1
                 initial={{ opacity: 0 }}

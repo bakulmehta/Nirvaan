@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { motion } from "framer-motion";
+import { useIsSafari } from '../hooks/useIsSafari';
 
 const ChatIcon = () => (
   <svg 
@@ -23,6 +24,7 @@ const ChatIcon = () => (
 const API_URL = import.meta.env.VITE_API_URL;
 
 function Form(): JSX.Element {
+    const isSafari = useIsSafari();
     const [phone, setPhone] = useState("");
     const [countryCode, setCountryCode] = useState("+91");
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -61,7 +63,10 @@ function Form(): JSX.Element {
                     playsInline
                     className="w-48 sm:w-56 md:w-64"
                 >
-                    <source src="/waves.webm" type="video/webm" />
+                    <source 
+                        src={isSafari ? "/waves.mov" : "/waves.webm"} 
+                        type={isSafari ? "video/quicktime" : "video/webm"} 
+                    />
                 </video>
                 <div className="space-y-6">
                     <h1 className="bg-gradient-to-r from-indigo-400 via-purple-400 to-sky-500 bg-clip-text text-transparent text-6xl sm:text-7xl md:text-8xl font-heading">

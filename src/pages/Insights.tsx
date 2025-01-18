@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { motion } from "framer-motion";
+import { useIsSafari } from '../hooks/useIsSafari';
 
 interface InsightsData {
   summary?: string;
@@ -20,6 +21,7 @@ function Insights(): JSX.Element {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [insights, setInsights] = useState<InsightsData | null>(null);
+  const isSafari = useIsSafari();
 
   useEffect(() => {
     const fetchCallDetails = async () => {
@@ -68,7 +70,10 @@ function Insights(): JSX.Element {
             className="flex flex-col items-center justify-center flex-1 gap-8"
           >
             <video autoPlay loop muted playsInline className="w-1/2 sm:w-1/4 md:w-1/6">
-              <source src="/blob.webm" type="video/webm" />
+              <source 
+                src={isSafari ? "/blob.mov" : "/blob.webm"} 
+                type={isSafari ? "video/quicktime" : "video/webm"} 
+              />
             </video>
             <div className="text-center flex flex-col gap-y-6">
               <h2 className="text-4xl sm:text-6xl md:text-7xl font-bold bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent font-heading py-4">
