@@ -16,7 +16,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "3000:3050"
     environment:
       - VITE_API_URL=${VITE_API_URL}
     restart: unless-stopped
