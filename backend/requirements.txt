@@ -1,0 +1,5 @@
+retell-sdk
+fastapi
+uvicorn
+pydantic
+python-dotenv
