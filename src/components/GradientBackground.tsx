@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { cn } from "../lib/utils";
 
 interface GradientBackgroundProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -14,45 +13,10 @@ export const GradientBackground: React.FC<GradientBackgroundProps> = ({
 }) => {
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-950" {...props}>
-      {/* Gradient Blobs - adjust positions for mobile */}
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute -top-20 sm:-top-40 -left-20 sm:-left-40 h-64 sm:h-96 w-64 sm:w-96 rounded-full bg-purple-500/30 blur-3xl"
-      />
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1,
-        }}
-        className="absolute top-20 sm:top-40 -right-20 sm:-right-40 h-64 sm:h-96 w-64 sm:w-96 rounded-full bg-indigo-500/30 blur-3xl"
-      />
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 2,
-        }}
-        className="absolute bottom-20 sm:bottom-40 left-20 sm:left-40 h-64 sm:h-96 w-64 sm:w-96 rounded-full bg-sky-500/30 blur-3xl"
-      />
+      {/* Static Gradient Blobs */}
+      <div className="absolute -top-20 sm:-top-40 -left-20 sm:-left-40 h-64 sm:h-96 w-64 sm:w-96 rounded-full bg-purple-500/30 blur-3xl" />
+      <div className="absolute top-1/2 -translate-y-1/2 -right-20 sm:-right-40 h-64 sm:h-96 w-64 sm:w-96 rounded-full bg-indigo-500/30 blur-3xl" />
+      <div className="absolute bottom-20 sm:bottom-40 left-20 sm:left-40 h-64 sm:h-96 w-64 sm:w-96 rounded-full bg-sky-500/30 blur-3xl" />
 
       {/* Content */}
       <div className={cn(

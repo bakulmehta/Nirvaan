@@ -72,7 +72,7 @@ function Form(): JSX.Element {
                             Your Trusted Mental Health Companion
                         </h2>
                         <p className="text-neutral-300 font-body text-base sm:text-lg max-w-lg mx-auto leading-relaxed">
-                            Connect with our empathetic AI assistant for a supportive conversation about your feelings. We're here 24/7, ready to listen without judgment.
+                            Connect with our empathetic AI assistant for a supportive conversation about your feelings. We're here 24/7, ready to listen without judgement.
                         </p>
                     </div>
                 </div>
