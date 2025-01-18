@@ -67,4 +67,4 @@ async def get_call_details(call_id: str):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8000, log_level="debug")
+    uvicorn.run(app, host="127.0.0.1", port=8050, log_level="debug")
