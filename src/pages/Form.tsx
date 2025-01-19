@@ -34,15 +34,16 @@ function Form(): JSX.Element {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
-        navigate("/insights", { state: { from: 'app' } });
-
+        
         try {
             const response = await axios.post(`${API_URL}/submit`, {
                 phone_number: countryCode + phone
             });
             localStorage.setItem("callId", response.data);
+            navigate("/call-progress", { state: { from: 'app' } });
         } catch (error) {
             console.error("Error:", error);
+            navigate("/error");
         } finally {
             setLoading(false);
         }
@@ -61,7 +62,7 @@ function Form(): JSX.Element {
                     loop
                     muted
                     playsInline
-                    className="w-48 sm:w-56 md:w-64"
+                    className="w-48 sm:w-56 md:w-64 pointer-events-none"
                 >
                     <source 
                         src={isSafari ? "/waves.mov" : "/waves.webm"} 

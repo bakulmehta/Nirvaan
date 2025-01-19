@@ -25,7 +25,7 @@ function Title(): JSX.Element {
                 loop
                 muted
                 playsInline
-                className="w-48 sm:w-56 md:w-64 mx-auto mb-8"
+                className="w-48 sm:w-56 md:w-64 mx-auto mb-8 pointer-events-none"
             >
                 <source 
                     src={isSafari ? "/waves.mov" : "/waves.webm"} 
@@ -53,4 +53,4 @@ function Title(): JSX.Element {
     );
 }
 
-export default Title; 
+export default Title;

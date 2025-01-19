@@ -1,25 +1,23 @@
-# Use Python 3.11 slim image
-FROM python:3.11-slim
+# Use Node.js base image
+FROM node:20-slim
 
-# Set working directory
+# Create app directory
 WORKDIR /app
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    gcc \
-    && rm -rf /var/lib/apt/lists/*
+# Copy package files
+COPY package*.json ./
 
-# Copy requirements first to leverage Docker cache
-COPY requirements.txt .
+# Install dependencies
+RUN npm install
 
-# Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy the rest of the application
+# Copy source code
 COPY . .
 
-# Expose the port the app runs on
-EXPOSE 8000
+# Copy .env from parent directory
+COPY ../.env ./.env
 
-# Command to run the application
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8050"] 
+# Expose the port the app runs on
+EXPOSE 8050
+
+# Start the application
+CMD ["npm", "start"]

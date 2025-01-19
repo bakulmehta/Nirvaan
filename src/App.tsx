@@ -1,12 +1,13 @@
 import { BrowserRouter as Router, Route, Routes, useLocation, Navigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Form from "./pages/Form";
-import Insights from "./pages/Insights";
 import Title from "./pages/Title";
+import Error from "./pages/Error";
 import { GradientBackground } from "./components/GradientBackground";
 import { AudioControls } from "./components/AudioControls";
+import CallProgress from "./pages/CallProgress";
+import CallResults from "./pages/CallResults";
 
-// Protected route component
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
     const location = useLocation();
     const isNavigatedFromApp = location.state?.from === 'app';
@@ -34,13 +35,22 @@ function AnimatedRoutes(): JSX.Element {
                     } 
                 />
                 <Route 
-                    path="/insights" 
+                    path="/call-progress" 
+                    element={
+                        // <ProtectedRoute>
+                            <CallProgress />
+                        // </ProtectedRoute>
+                    } 
+                />
+                <Route 
+                    path="/call-results" 
                     element={
                         <ProtectedRoute>
-                            <Insights />
+                            <CallResults />
                         </ProtectedRoute>
                     } 
                 />
+                <Route path="/error" element={<Error />} />
                 <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
         </AnimatePresence>
