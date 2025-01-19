@@ -13,9 +13,6 @@ RUN npm install
 # Copy source code
 COPY . .
 
-# Copy .env from parent directory
-COPY ../.env ./.env
-
 # Expose the port the app runs on
 EXPOSE 8050
 
