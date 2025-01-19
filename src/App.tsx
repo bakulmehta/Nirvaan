@@ -37,9 +37,9 @@ function AnimatedRoutes(): JSX.Element {
                 <Route 
                     path="/call-progress" 
                     element={
-                        // <ProtectedRoute>
+                        <ProtectedRoute>
                             <CallProgress />
-                        // </ProtectedRoute>
+                        </ProtectedRoute>
                     } 
                 />
                 <Route 
