@@ -8,8 +8,11 @@ function Title(): JSX.Element {
     const isSafari = useIsSafari();
 
     useEffect(() => {
+        // Set the visited flag
+        sessionStorage.setItem("visited", "true");
+        
         const timer = setTimeout(() => {
-            navigate('/home');
+            navigate('/home', { state: { from: 'app' } });
         }, 2000);
 
         return () => clearTimeout(timer);

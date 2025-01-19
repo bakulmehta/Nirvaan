@@ -17,10 +17,17 @@ AGENT_ID = os.getenv('AGENT_ID')
 RETELL_API_KEY = os.getenv('RETELL_API_KEY')
 FROM_PHONE_NUMBER = os.getenv('FROM_PHONE_NUMBER')
 
-# Enable CORS
+# Add CORS middleware
+origins = [
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "https://nirvaan.help",
+    # Add any other domains you need
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Adjust this as needed
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

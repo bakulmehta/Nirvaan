@@ -34,7 +34,7 @@ function Form(): JSX.Element {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
-        navigate("/insights");
+        navigate("/insights", { state: { from: 'app' } });
 
         try {
             const response = await axios.post(`${API_URL}/submit`, {
